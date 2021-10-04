@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin.AdminDAO">
+
+
+	<select id="Adlogin" parameterType="adminVO" resultType="adminVO">
+		select id, name, password, type
+		from member
+		where id= #{id} and password= #{password}
+	</select>
+	
+	<!-- 회원목록조회 -->
+	<select id="infoList" resultType="infoVO">
+		select * from member
+	</select>
+	
+	<!-- 총회원수 -->
+	<select id="mainOne" resultType="adminVO">
+		select count (*) countMember from member
+	</select>
+	
+	<!-- 협약학교수 -->
+	<select id="mainTwo" resultType="adminVO">
+		select count(*) countSchool
+		from
+		(select school, count(school) from member group by school order by school)
+	</select>
+	
+	<!-- 협약학교수 -->
+	<select id="mainThree" resultType="adminVO">
+		select count(*) countMbti from mbti
+	</select>
+	
+	<!-- 은행계좌수 -->
+	<select id="mainFour" resultType="adminVO">
+		select count(*) bankCount from member_bank
+	</select>
+	
+	<select id="mainFive" resultType="adminVO">
+		select count(*) stockCount from member_stock
+	</select>
+	
+	<!-- 협약학교 목록 -->
+	<select id="schoolList" resultType="adminVO">
+		select s.no, s.school, s.address, a.stu , s.add_date
+		from 
+		(select school, count(*) as stu from member group by school) a, school s
+		where a.school=s.school
+		order by no
+	</select>
+	
+	<!-- report info: 개인 -->
+	<select id="report" parameterType="infoVO" resultType="infoVO">
+		select a.*, b.bank_type, b.bank_id, b.bank_id_bal, b.bank_id_date
+		from
+		(select m.id,m.stu_id,m.name,m.school,m.phone, m.addr1, m.addr2, m.addr3,m.join_date, s.stock_bal, s.stock_acc, s.stock_acc_date
+		from member m, member_stock s
+		where m.id=s.id) a,
+		 
+		(select user_id,bank_type,bank_id,bank_id_date,bank_id_bal
+		from member_bank)b
+		where a.id = b.user_id
+		and a.school =#{school}
+		and a.stu_id=#{stu_id}
+	</select>
+	
+<!-- 	 개설된 계좌 정보 보여주기 
+	<select id="myAccounts" parameterType="String" resultType="bankVO">
+		select bank_username, bank_type, bank_id_bal, bank_aim, bank_id, to_char(bank_id_date,'yyyy-mm-dd') bank_id_date from member_bank
+		where user_id = #{id}
+	</select>
+	
+	계좌이체
+	<insert id="transMoney" statementType="CALLABLE" parameterType="transVO">
+		 {call trans(
+		 		#{bank_id}, #{trans_money}, #{your_bank_id})
+         }
+		
+	
+	</insert>
+	이체내역조회
+	<select id="transList" parameterType="String" resultType="transVO">
+		select m.user_id, m.bank_type,m.bank_id, t.trans_money,t.your_bank_id, t.trans_info, m.bank_id_bal, t.trans_date
+		from member_bank m,
+		(select bank_id, trans_money, your_bank_id, decode(trans_info,'S','송금','출금') trans_info, trans_date
+		from bank_trans 
+		order by trans_code desc) t
+		where m.bank_id=t.bank_id
+		and m.user_id= #{id}
+
+	</select> -->
+	
+</mapper>

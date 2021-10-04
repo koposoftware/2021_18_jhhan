@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd">
+
+	<context:component-scan base-package="kr.ac.kopo" />
+    <mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	
+	<context:component-scan base-package="crawler.StockController" />
+		
+    <!-- 스케줄러 생성 -->
+    <task:annotation-driven executor="executor" scheduler="scheduler"/>
+    <!-- pool-size 지정하지 않을 경우 쓰레드 풀의 기본값은 1 -->   
+    <task:scheduler id="scheduler" pool-size="10"/>
+    <task:executor id="executor" pool-size="10"/>
+    
+    <!-- mail -->
+
+    
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+   
+    <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="hjh847@gmail.com"/>
+        <property name="password" value="angki950847" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+            </props>
+        </property>
+    </bean>
+    
+    	<!-- locale 다국어지원 -->
+    		<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		        <property name="basename" value="classpath:languages/lang"/>
+		        <property name="defaultEncoding" value="UTF-8"/>
+		        <property name="cacheSeconds" value="3600" />
+		    </bean>
+				    
+		    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		        <property name="defaultLocale" value="chn"/>
+		    </bean>
+		    <!-- properties 캐시를 확인하는 주기 지정 -->
+    
+    
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="location" value="classpath:config/prop/db.properties"/>
+	<property name="fileEncoding" value="UTF-8"/>
+	</bean>
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="location" value="classpath:config/prop/application.properties"/>
+	<property name="fileEncoding" value="UTF-8"/>
+	</bean>
+	<bean id ="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method ="close">
+		<property name="driverClassName" value="${driver}"/>
+		<property name="url" value="${url}"/>
+		<property name="username" value="${user}"/>
+		<property name="password" value="${password}"/>
+		
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:config/mybatis/sqlMapConfig.xml"/>
+		<property name="mapperLocations" value="classpath:config/sqlmap/oracle/*.xml"></property>
+	</bean>
+	 
+ 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>	
+	</bean> 
+	
+	
+	<mvc:view-resolvers>
+		<mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp" />
+	</mvc:view-resolvers>
+
+
+	
+
+</beans>

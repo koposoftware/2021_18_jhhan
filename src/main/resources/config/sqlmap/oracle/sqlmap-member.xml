@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member.MemberDAO">
+
+
+	<select id="login" parameterType="memberVO" resultType="memberVO">
+		select id, name, password, type,school
+		from member
+		where id= #{id} and password= #{password}
+	</select>
+	
+	<!-- 계좌개설1 -->
+	<insert id="account" parameterType="hashmap">
+		insert into member_bank(user_id, bank_username, bank_res_no, bank_type, bank_aim,  bank_email, bank_addr1, bank_addr2, bank_addr3, bank_phone, bank_password, bank_identi, bank_id)
+		    values(#{memberVO.id},#{memberVO.name},#{bankVO.bank_res_no},'영하나플러스 통장','','', '','','','','','Y',111||round(dbms_random.value(10000000,99999999)) )
+	</insert>
+	
+	<!-- 계좌개설2 -->
+	<update id="accountTwo" parameterType="hashmap">
+		update member_bank SET bank_email= #{bankVO.bank_email}, bank_addr1= #{bankVO.bank_addr1}, bank_addr2= #{bankVO.bank_addr2}, bank_addr3= #{bankVO.bank_addr3}, bank_password= #{bankVO.bank_password}
+	 	where user_id=#{memberVO.id} and bank_email is null
+	</update>
+	
+	<!-- 개설된 계좌 정보 보여주기 -->
+	<select id="myAccounts" parameterType="String" resultType="bankVO">
+		select bank_username, bank_type, bank_id_bal, bank_aim, bank_id, to_char(bank_id_date,'yyyy-mm-dd') bank_id_date from member_bank
+		where user_id = #{id}
+	</select>
+	
+	<select id="classAcc" parameterType="memberVO" resultType="bankVO">
+	select a.id,a.bank_username, a.bank_id
+		from
+		(select m.id,substr(m.id,2,3) class, m.name, s.bank_username, s.bank_id From member m
+		, member_bank s
+		where m.id=s.user_id
+		and m.school=#{school})a
+		where a.class = substr(#{id},2,3)
+		and not a.id=#{id}
+	
+	</select>
+	
+	
+	<!-- 계좌이체 -->
+	<insert id="transMoney" statementType="CALLABLE" parameterType="transVO">
+		 {call trans(
+		 		#{bank_id}, #{trans_money}, #{your_bank_id})
+         }
+		
+	
+	</insert>
+	<!-- 이체내역조회 -->
+	<select id="transList" parameterType="String" resultType="transVO">
+		select m.user_id, m.bank_type,m.bank_id, t.trans_money,t.your_bank_id, t.trans_info, m.bank_id_bal, t.trans_date
+		from member_bank m,
+		(select bank_id, trans_money, your_bank_id, decode(trans_info,'S','송금','입금') trans_info, trans_date
+		from bank_trans 
+		order by trans_code desc) t
+		where m.bank_id=t.bank_id
+		and m.user_id= #{id}
+
+	</select>
+	
+	
+	<!-- 랭킹 조회 -->
+	<select id="rank" parameterType="memberVO" resultType="memberVO">
+			select a.id, a.name, a.class, a.stock_bal, a.stock_acc,
+				rank() over(order by a.stock_bal desc) rank
+				from
+				(select m.id,substr(m.id,2,3) class, m.name, s.stock_bal, s.stock_acc From member m
+				, member_stock s
+				where m.id=s.id
+				and m.school=#{school})a
+			where a.class = substr(#{id},2,3)
+	</select>
+	
+	
+</mapper>

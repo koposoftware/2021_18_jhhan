@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="crawl.stock">
+
+
+<!-- 주식: 크롤링 정보 화면에 가져오기-->
+ 	<select id="selectAll" resultType="stockmainVO">
+		select* from ( select * from stock order by crawl_date desc)where rownum <![CDATA[ <= ]]> 30 order by no
+	</select>
+
+
+<!-- 주식 크롤링 데이터 insert -->
+	<insert id="insertInfo" parameterType="stockVO" >
+		<foreach collection="list" open="DECLARE BEGIN" close="; END;" separator=";" item="menu">
+			insert into stock( no, name, search_per, now_p, ntob, updown, howmany, start_p, high_p, low_p, per, roe )
+				values( seq_stock_no.nextval, #{menu.name},#{menu.search_per}, #{menu.now_p}, #{menu.ntob}, #{menu.updown}, #{menu.howmany}, #{menu.start_p}, #{menu.high_p}, #{menu.low_p},
+				 #{menu.per}, #{menu.roe})
+		</foreach>
+	</insert> 
+	
+	
+<!-- 플레이스톡(round 1): 주식표 화면에 가져오기 round 1 -->
+	<select id="play01" resultType="stockmainVO">
+		select to_char(stock_date,'yy/mm/dd')as stock_date, stock_code ticker,stock_name, TO_CHAR(end_p , '999,999,999,999,999')end_p , compare , TO_CHAR( stocks_totalprice , '999,999,999,999,999')stocks_totalprice
+		from play_stock
+		where stock_date = '21/01/05'
+		and stock_name in ('삼성전자','CJ ENM','SK하이닉스','카카오','NAVER',
+		                    '현대차','한국항공우주','LG화학', '삼성SDI','현대백화점',
+		                    '호텔신라','이마트','하나투어','NH투자증권','하나금융지주',
+		                    'KB금융','카카오게임즈','카카오뱅크','엔씨소프트', '골프존',
+		                    '롯데칠성', '하이트진로', '아모레퍼시픽', 'LG생활건강','셀트리온',
+		                    '삼성바이오로직스')
+	</select>
+	
+	<select id="play02" resultType="stockmainVO">
+		select to_char(stock_date,'yy/mm/dd')as stock_date, stock_code ticker,stock_name, TO_CHAR(end_p , '999,999,999,999,999')end_p , compare , TO_CHAR( stocks_totalprice , '999,999,999,999,999')stocks_totalprice
+		from play_stock
+		where stock_date = '21/01/06'
+		and stock_name in ('삼성전자','CJ ENM','SK하이닉스','카카오','NAVER',
+		                    '현대차','한국항공우주','LG화학', '삼성SDI','현대백화점',
+		                    '호텔신라','이마트','하나투어','NH투자증권','하나금융지주',
+		                    'KB금융','카카오게임즈','카카오뱅크','엔씨소프트', '골프존',
+		                    '롯데칠성', '하이트진로', '아모레퍼시픽', 'LG생활건강','셀트리온',
+		                    '삼성바이오로직스')
+	</select>
+	
+	
+<!-- 플레이스톡: 매수 가격 아이디 찾아 업데이트 -->
+	<update id="stockBal01" parameterType="hashmap">
+		update member_stock set stock_bal = stock_bal- #{stockmainVO.input_cost}
+		where id=#{memberVO.id}
+	</update> 
+
+<!-- 플레이스톡: 매수정보 거래내역테이블 저장 -->
+	<insert id="stockBuy" parameterType="hashmap">
+		insert into mem_stock_buy(log_no, state, id, stock_name, count, end_p )
+			values( mem_stock_log_seq.nextval, 11||round(dbms_random.value(10000,99999)) , #{memberVO.id}, #{stockmainVO.stock_name}, #{stockmainVO.count}, #{stockmainVO.end_p})
+	</insert>
+<!-- 플레이스톡: 거래내역 출력-->
+	<select id="myStock" parameterType="String" resultType="mystockVO">
+		select b.log_no log_no, b.id id, s.stock_acc stock_acc, trim(to_char(s.stock_bal,'999,999,999')) stock_bal, b.stock_name stock_name, b.count count, b.end_p end_p, b.buy_date buy_date, b.state state
+		from(select log_no,id, stock_name, count, end_p,buy_date, case when state like '11%' then '매수' else '매도' end as state 
+		    from mem_stock_buy) b , member_stock s
+		where s.id=b.id
+		and count <![CDATA[ > ]]> 0 
+		and s.id=#{id}
+		order by b.log_no desc
+	</select>
+
+
+
+<!-- 매도 후 잔액 업데이트  -->
+	<update id="stockBal02" parameterType="hashmap">
+		update member_stock set stock_bal = stock_bal+ #{stockmainVO.input_cost}
+		where id=#{memberVO.id}
+	</update> 
+
+<!-- 플레이스톡: 매도 가격 아이디 찾아 count 테이블업뎃 -->
+	<insert id="stockBC" statementType="CALLABLE" parameterType="hashmap">
+		{call buynsell(
+		 		#{stockmainVO.stock_name}, #{stockmainVO.count})
+         }
+	</insert> 
+	
+	<insert id="stockSell" parameterType="hashmap">
+		insert into mem_stock_sell(log_no, state, id, stock_name, count, end_p )
+			values( mem_stock_log_seq.nextval, 22||round(dbms_random.value(10000,99999)) , #{memberVO.id}, #{stockmainVO.stock_name}, #{stockmainVO.count}, #{stockmainVO.end_p})
+	</insert> 
+	
+	
+<!-- 플레이스톡: 거래내역 출력-->
+	<select id="myStock2" parameterType="String" resultType="mystockVO">
+		select b.log_no log_no, b.id id, s.stock_acc stock_acc, trim(to_char(s.stock_bal,'999,999,999')) stock_bal, b.stock_name stock_name, b.count count, b.end_p end_p, b.sell_date sell_date, b.state state
+		from(select log_no,id, stock_name, count, end_p,sell_date, case when state like '11%' then '매수' else '매도' end as state 
+		    from mem_stock_sell) b ,
+		    member_stock s
+		where s.id=b.id
+		and s.id =#{id}
+		order by b.log_no desc
+	</select>
+	
+	
+
+
+
+	
+</mapper>

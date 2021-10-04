@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mbti.MbtiDAO">
+
+	<!-- 퀴즈결과 디비저장 -->
+	<insert id="result" parameterType="hashmap">
+		insert into mbti(test_count, id, score)
+		values(seq_mbti_test.nextval,#{memberVO.id}, #{mbtiVO.score})
+		
+	</insert>
+	
+	<select id="showResult" parameterType="hashmap">
+		
+	</select>
+	
+
+	
+	
+	
+	
+</mapper>
