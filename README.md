@@ -31,6 +31,10 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 ## 서비스 아키텍처
 ![image](https://user-images.githubusercontent.com/79953962/135832916-2a0983a7-287c-4fc1-9b9a-0932f7cf7498.png)
 
+## ERD
+![image](https://user-images.githubusercontent.com/79953962/135834175-edc7acb5-3507-4bfe-984c-a340c7d4a06d.png)
+
+
 
 ## 시연 동영상 
 
