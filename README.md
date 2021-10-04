@@ -4,7 +4,9 @@
 
 # 1. 프로젝트 개요
 
-이것은 프로젝트 개요입니다. 글과 그림을 이용하여 개요를 설명하세요.
+경제에 대한 거부감, 주식시장 유입고객연령의 낮아짐, 실용성있는 금융교육의 결핍 등, 금융교육의 필요성이 확대되고 있음에 따라, 청소년들을 대상으로 한 온라인 ‘체험형 금융교육 플랫폼’을 개발하고자 한다.
+또한, 기존 하나은행의 1사1교 프로그램을 확장하여 온라인 교육을 진행하며, 금융교육 서비스를 제공하는 타 기관과 차별화를 둔, 체험형 교육 플랫폼이다.
+PlayH금융거래 체험을 통한 청소년들의 금융지식 함양 및 미래 잠재고객 확보를 목적으로 한다.
 
 # 2. 프로젝트 제안서
 
@@ -22,17 +24,17 @@
 
 ## 시연 동영상 
 
-   <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/6LxbdIjWP04" frameborder="0"></iframe>
+   <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://youtu.be/m-ML6sETiHE" frameborder="0"></iframe>
 
 # 4. 본인 소개
 
 본인 소개를 추가하세요
 
-|이름 |고길동|![gdKO](/gdko.jpg)|
-|연락처 | gdko(@)kopo.ac.kr|
+|이름 |한주희|![gdKO](/gdko.jpg)|
+|연락처 | angki_95@naver.com|
 |skill set| Frontend - HTML, CSS, Javascript|
 | | Backend - Java, Spring, Oracle|
-|자격증|  |
+|자격증| 정보처리기사 필기 (2021) |
 |수상| |
 |특기사항|  TOEIC 990 |
 
