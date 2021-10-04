@@ -16,7 +16,7 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 
 
 
-   <img src="ppt1.png"/>[제안서](/project.pptx)<br>
+   <img src="ppt1.png"/>[제안서](/Play하나_청소년대상 체험형 금융교육시스템_한주희.pptx)<br>
  
 
 # 3. 프로젝트 결과
