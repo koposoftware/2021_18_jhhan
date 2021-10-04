@@ -4,16 +4,19 @@
 
 # 1. 프로젝트 개요
 
+![image](https://user-images.githubusercontent.com/79953962/135833078-1b504445-68f6-4ef6-afb5-f181531bea85.png)
+
+
 경제에 대한 거부감, 주식시장 유입고객연령의 낮아짐, 실용성있는 금융교육의 결핍 등, 금융교육의 필요성이 확대되고 있음에 따라, 청소년들을 대상으로 한 온라인 ‘체험형 금융교육 플랫폼’을 개발하고자 한다.<br>
 또한, 기존 하나은행의 1사1교 프로그램을 확장하여 온라인 교육을 진행하며, 금융교육 서비스를 제공하는 타 기관과 차별화를 둔, 체험형 교육 플랫폼이다.
 PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 미래 잠재고객 확보를 목적으로 한다.
 
+
 # 2. 프로젝트 제안서
 
-프로젝트 제안서를 설명하세요. 발표자료와 동영상을 추가하세요. 시스템의 아키텍쳐 설명도 추가하세요.
 
-   <img src="ppt1.png"/>[프로젝트 제안서](/project.pptx)<br>
-   <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/6LxbdIjWP04" frameborder="0"></iframe>
+
+   <img src="ppt1.png"/>[제안서](/project.pptx)<br>
  
 
 # 3. 프로젝트 결과
@@ -21,6 +24,13 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 
 ## 발표 ppt 
    <img src="ppt.png"/>[발표자료](/PLAYHANA,청소년대상 금융교육플랫폼_한주희.pdf)<br>
+   
+## 시스템 아키텍처
+![image](https://user-images.githubusercontent.com/79953962/135832826-7735537d-9959-4904-8b2b-5551299f1982.png) <br>
+
+## 서비스 아키텍처
+![image](https://user-images.githubusercontent.com/79953962/135832916-2a0983a7-287c-4fc1-9b9a-0932f7cf7498.png)
+
 
 ## 시연 동영상 
 
