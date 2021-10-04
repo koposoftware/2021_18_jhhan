@@ -20,21 +20,31 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
  
 
 # 3. 프로젝트 결과
-프로젝트 결과를 추가하세요. 발표자료. 시연동영상을 추가하세요.
+## 수행기간
+2021/09/06 ~ 2021/10/05
 
-## 발표 ppt 
-   <img src="ppt.png"/>[발표자료](/PLAYHANA,청소년대상 금융교육플랫폼_한주희.pdf)<br>
-   
+## 담당업무
+프로젝트 기획/설계, 데이터베이스 구축 및 Front-end, Back-end 개발
+
+## 사용기술
+- Spring MVC 기반 웹 어플리케이션 개발
+- JavaMailSender를 사용하여 금융성과리포트 발송
+- Coolsms API를 사용하여 본인인증 서비스
+- Spring Scheduler를 활용하여 주식 인기종목 30개 크롤링 자동화(15분 간격)
+- Kakao API를 활용한 알림서비스
+- Spring Locale을 활용한 다국어지원
+- YouTube Data API를 활용하여 '하나TV' 실시간 목록 가져오기
+
 ## 시스템 아키텍처
 ![image](https://user-images.githubusercontent.com/79953962/135832826-7735537d-9959-4904-8b2b-5551299f1982.png) <br>
-
-## 서비스 아키텍처
-![image](https://user-images.githubusercontent.com/79953962/135832916-2a0983a7-287c-4fc1-9b9a-0932f7cf7498.png)
 
 ## ERD
 ![image](https://user-images.githubusercontent.com/79953962/135834175-edc7acb5-3507-4bfe-984c-a340c7d4a06d.png)
 
 
+## 발표 ppt 
+   <img src="ppt.png"/>[발표자료](/PLAYHANA,청소년대상 금융교육플랫폼_한주희.pdf)<br>
+ 
 
 ## 시연 동영상 
 
@@ -42,7 +52,6 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 
 # 4. 본인 소개
 
-본인 소개를 추가하세요
 
 |이름 |한주희|![jooheeHan](/jooheeHan.jpg)|
 |연락처 | angki_95@naver.com|
@@ -53,7 +62,6 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 |특기사항|  TOEIC |
 
 # 5. 기타
-그외 프로젝트를 더욱 설명할수 있는 것들을 추가하세요
 
 # 홈페이지 설정
  본인 repository에서 "Setting"를 들어가서 GitHub Pages에서 설정 변경.
