@@ -30,7 +30,7 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 
 본인 소개를 추가하세요
 
-|이름 |한주희|![gdKO](/gdko.jpg)|
+|이름 |한주희|![gdKO](/jooheeHan.jpg)|
 |연락처 | angki_95@naver.com|
 |skill set| Frontend - HTML, CSS, Javascript,Bootstrap,jQuery|
 | | Backend - Java, Spring, Oracle|
