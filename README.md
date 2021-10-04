@@ -12,7 +12,7 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 
 프로젝트 제안서를 설명하세요. 발표자료와 동영상을 추가하세요. 시스템의 아키텍쳐 설명도 추가하세요.
 
-   <img src="ppt1.png"/>[발표자료](/project.pptx)<br>
+   <img src="ppt1.png"/>[프로젝트 제안서](/project.pptx)<br>
    <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/6LxbdIjWP04" frameborder="0"></iframe>
  
 
@@ -24,7 +24,7 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 
 ## 시연 동영상 
 
-   <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://youtu.be/m-ML6sETiHE" frameborder="0"></iframe>
+   <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/watch?v=m-ML6sETiHE&t=3s" frameborder="0"></iframe>
 
 # 4. 본인 소개
 
