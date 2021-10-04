@@ -1,6 +1,6 @@
 # 프로젝트 제목
 
-[프로젝트 홈페이지 - https://koposoftware.github.io/template/](https://koposoftware.github.io/template/)
+[프로젝트 홈페이지 - https://koposoftware.github.io/2021_18_jhhan/](https://koposoftware.github.io/2021_18_jhhan/)
 
 # 1. 프로젝트 개요
 
@@ -20,7 +20,7 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 프로젝트 결과를 추가하세요. 발표자료. 시연동영상을 추가하세요.
 
 ## 발표 ppt 
-   <img src="ppt.png"/>[발표자료](PLAYHANA,청소년대상 금융교육플랫폼_한주희.pptx)<br>
+   <img src="ppt.png"/>[발표자료](/PLAYHANA,청소년대상 금융교육플랫폼_한주희.pptx)<br>
 
 ## 시연 동영상 
 
@@ -30,7 +30,7 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 
 본인 소개를 추가하세요
 
-|이름 |한주희|![gdKO](/jooheeHan.jpg)|
+|이름 |한주희|![jooheeHan](/jooheeHan.jpg)|
 |연락처 | angki_95@naver.com|
 |skill set| Frontend - HTML, CSS, Javascript,Bootstrap,jQuery|
 | | Backend - Java, Spring, Oracle|
