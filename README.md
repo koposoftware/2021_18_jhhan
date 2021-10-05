@@ -48,7 +48,9 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 
 ## 시연 동영상 
 
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/m-ML6sETiHE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  [![영상](ppt.png)](https://www.youtube.com/embed/m-ML6sETiHE)
+
+  
 
 # 4. 본인 소개
 
