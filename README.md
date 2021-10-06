@@ -72,7 +72,8 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 
 프로젝트 추가설명
 
-![image](https://user-images.githubusercontent.com/79953962/136121889-766c94af-6dea-4a36-bad3-8fba57fb6add.png)
+![image](https://user-images.githubusercontent.com/79953962/136121965-cb6e8cfa-1eee-4973-8557-e0c881e4c5bd.png)
+
 
 
 
