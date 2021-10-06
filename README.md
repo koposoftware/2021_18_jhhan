@@ -61,8 +61,9 @@ PlayHana금융거래 체험을 통한 청소년들의 금융지식 함양 및 �
 |skill set| Frontend - HTML, CSS, Javascript,Bootstrap,jQuery|
 | | Backend - Java, Spring, Oracle|
 |자격증| 정보처리기사 필기 (2021) |
-|수상| 입선- 고용노동부 주최 창업경진대회 |
-|특기사항|  TOEIC |
+|수상| 입선- 고용노동부 주최 창업경진대회(2021) |
+|| 우수상 - 빅데이터 소셜마케팅 분석보고서 공모전 (2019.08)|
+|특기사항|  TOEIC, TOEIC-SPEAKING, 新HSK  |
 
 # 5. 기타
 
